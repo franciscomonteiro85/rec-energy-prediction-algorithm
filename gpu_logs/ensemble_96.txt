@@ -1,0 +1,276 @@
+
+-----------------------------------------
+
+XGBoost
+
+
+Iteration 0
+Train set:  (1401600, 99)
+Test set:  (385440, 99)
+Elapsed time: 2.6508 s
+MSE: 0.1896
+WAPE: 29.3574
+R2: 0.7853
+
+Iteration 1
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 1.1178 s
+MSE: 0.1107
+WAPE: 28.0899
+R2: 0.8125
+
+Iteration 2
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 1.1074 s
+MSE: 1.1490
+WAPE: 27.0037
+R2: 0.5980
+
+Iteration 3
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 1.1103 s
+MSE: 0.1986
+WAPE: 27.6376
+R2: 0.7804
+
+Iteration 4
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 1.1132 s
+MSE: 0.1208
+WAPE: 31.0434
+R2: 0.7671
+
+Iteration 5
+Train set:  (1401600, 99)
+Test set:  (385440, 99)
+Elapsed time: 1.0952 s
+MSE: 1.0081
+WAPE: 25.5213
+R2: 0.6091
+
+Iteration 6
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 1.1277 s
+MSE: 0.2474
+WAPE: 29.9733
+R2: 0.7768
+
+Iteration 7
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 1.1285 s
+MSE: 0.1532
+WAPE: 29.4731
+R2: 0.7976
+
+Iteration 8
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 1.1278 s
+MSE: 0.1594
+WAPE: 28.7103
+R2: 0.7733
+
+Iteration 9
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 1.1256 s
+MSE: 0.1248
+WAPE: 29.9880
+R2: 0.7571
+
+XGBoost full time:  72.11579942703247
+
+-----------------------------------------
+
+Linear Regression
+
+
+Iteration 0
+Train set:  (1401600, 99)
+Test set:  (385440, 99)
+Elapsed time: 4.9191 s
+MSE: 0.1951
+WAPE: 30.8618
+R2: 0.7791
+
+Iteration 1
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 4.8772 s
+MSE: 0.1354
+WAPE: 30.7100
+R2: 0.7706
+
+Iteration 2
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 4.8738 s
+MSE: 0.2881
+WAPE: 25.4072
+R2: 0.8992
+
+Iteration 3
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 4.8740 s
+MSE: 0.2302
+WAPE: 30.2156
+R2: 0.7454
+
+Iteration 4
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 4.8724 s
+MSE: 0.1464
+WAPE: 33.1674
+R2: 0.7177
+
+Iteration 5
+Train set:  (1401600, 99)
+Test set:  (385440, 99)
+Elapsed time: 4.8248 s
+MSE: 0.2110
+WAPE: 23.9122
+R2: 0.9182
+
+Iteration 6
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 4.8725 s
+MSE: 0.2466
+WAPE: 30.9885
+R2: 0.7775
+
+Iteration 7
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 4.8770 s
+MSE: 0.1927
+WAPE: 32.3095
+R2: 0.7455
+
+Iteration 8
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 4.8744 s
+MSE: 0.1990
+WAPE: 31.5030
+R2: 0.7169
+
+Iteration 9
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 4.8734 s
+MSE: 0.1481
+WAPE: 32.3460
+R2: 0.7117
+
+Linear Regression full time:  109.17978119850159
+
+-----------------------------------------
+
+Random Forest
+
+
+Iteration 0
+Train set:  (1401600, 99)
+Test set:  (385440, 99)
+Elapsed time: 25.8666 s
+MSE: 0.1782
+WAPE: 27.5744
+R2: 0.7982
+
+Iteration 1
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 26.1111 s
+MSE: 0.0885
+WAPE: 25.4104
+R2: 0.8502
+
+Iteration 2
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 26.3823 s
+MSE: 1.2431
+WAPE: 26.6077
+R2: 0.5650
+
+Iteration 3
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 26.5966 s
+MSE: 0.1763
+WAPE: 25.8972
+R2: 0.8051
+
+Iteration 4
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 26.1625 s
+MSE: 0.1025
+WAPE: 28.5732
+R2: 0.8023
+
+Iteration 5
+Train set:  (1401600, 99)
+Test set:  (385440, 99)
+Elapsed time: 27.2628 s
+MSE: 1.0575
+WAPE: 24.0037
+R2: 0.5900
+
+Iteration 6
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 27.7427 s
+MSE: 0.2216
+WAPE: 28.3240
+R2: 0.8001
+
+Iteration 7
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 28.0919 s
+MSE: 0.1097
+WAPE: 26.0302
+R2: 0.8551
+
+Iteration 8
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 28.4218 s
+MSE: 0.1195
+WAPE: 25.6954
+R2: 0.8300
+
+Iteration 9
+Train set:  (1436640, 99)
+Test set:  (350400, 99)
+Elapsed time: 28.1603 s
+MSE: 0.1019
+WAPE: 27.0894
+R2: 0.8018
+
+Random Forest full time:  330.83557057380676
+
+XGBoost
+Total Averaged MSE: 0.346
+Total Averaged WAPE: 28.68
+Total Averaged R2: 0.746
+
+Linear Regression
+Total Averaged MSE: 0.199
+Total Averaged WAPE: 30.142
+Total Averaged R2: 0.778
+
+Random Forest
+Total Averaged MSE: 0.34
+Total Averaged WAPE: 26.521
+Total Averaged R2: 0.77
