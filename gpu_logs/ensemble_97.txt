@@ -1,0 +1,220 @@
+
+----------------------------
+
+Linear Regression
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 12.0591 s
+MSE: 0.1455
+WAPE: 31.8494
+R2: 0.7969
+
+Iteration 1
+Elapsed time: 10.0300 s
+MSE: 0.1421
+WAPE: 33.1203
+R2: 0.7522
+
+Iteration 2
+Elapsed time: 6.9666 s
+MSE: 0.1570
+WAPE: 33.1447
+R2: 0.7165
+
+Iteration 3
+Elapsed time: 6.1372 s
+MSE: 0.1320
+WAPE: 31.6366
+R2: 0.7966
+
+Iteration 4
+Elapsed time: 5.9489 s
+MSE: 0.2479
+WAPE: 31.6382
+R2: 0.7896
+
+Iteration 5
+Elapsed time: 5.7829 s
+MSE: 0.1811
+WAPE: 32.6350
+R2: 0.7236
+
+Iteration 6
+Elapsed time: 5.6518 s
+MSE: 0.1979
+WAPE: 31.0264
+R2: 0.7748
+
+Iteration 7
+Elapsed time: 5.2234 s
+MSE: 0.1371
+WAPE: 31.9740
+R2: 0.7796
+
+Iteration 8
+Elapsed time: 5.3094 s
+MSE: 0.2332
+WAPE: 33.7175
+R2: 0.6844
+
+Iteration 9
+Elapsed time: 5.2293 s
+MSE: 0.2768
+WAPE: 31.9632
+R2: 0.7537
+
+----------------------------
+
+XGBoost
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 1.1956 s
+MSE: 0.1394
+WAPE: 30.2660
+R2: 0.8053
+
+Iteration 1
+Elapsed time: 1.1762 s
+MSE: 0.1151
+WAPE: 30.4392
+R2: 0.7992
+
+Iteration 2
+Elapsed time: 1.1512 s
+MSE: 0.1206
+WAPE: 29.6004
+R2: 0.7823
+
+Iteration 3
+Elapsed time: 1.1615 s
+MSE: 0.1067
+WAPE: 29.4417
+R2: 0.8357
+
+Iteration 4
+Elapsed time: 1.1643 s
+MSE: 0.2395
+WAPE: 29.9573
+R2: 0.7967
+
+Iteration 5
+Elapsed time: 1.1551 s
+MSE: 0.1496
+WAPE: 29.1619
+R2: 0.7717
+
+Iteration 6
+Elapsed time: 1.1401 s
+MSE: 0.1645
+WAPE: 27.5283
+R2: 0.8128
+
+Iteration 7
+Elapsed time: 1.1385 s
+MSE: 0.1179
+WAPE: 28.8220
+R2: 0.8106
+
+Iteration 8
+Elapsed time: 1.1631 s
+MSE: 0.1898
+WAPE: 30.8713
+R2: 0.7431
+
+Iteration 9
+Elapsed time: 1.1502 s
+MSE: 0.2229
+WAPE: 28.4474
+R2: 0.8016
+
+----------------------------
+
+Random Forest
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 26.8437 s
+MSE: 0.1361
+WAPE: 29.0110
+R2: 0.8100
+
+Iteration 1
+Elapsed time: 26.4550 s
+MSE: 0.1018
+WAPE: 28.5600
+R2: 0.8224
+
+Iteration 2
+Elapsed time: 26.9749 s
+MSE: 0.0886
+WAPE: 26.3755
+R2: 0.8401
+
+Iteration 3
+Elapsed time: 26.1546 s
+MSE: 0.1107
+WAPE: 28.7382
+R2: 0.8294
+
+Iteration 4
+Elapsed time: 26.4386 s
+MSE: 0.2450
+WAPE: 29.0215
+R2: 0.7920
+
+Iteration 5
+Elapsed time: 27.1418 s
+MSE: 0.1252
+WAPE: 26.4159
+R2: 0.8088
+
+Iteration 6
+Elapsed time: 27.0518 s
+MSE: 0.1389
+WAPE: 25.0962
+R2: 0.8420
+
+Iteration 7
+Elapsed time: 26.9566 s
+MSE: 0.0963
+WAPE: 26.3249
+R2: 0.8453
+
+Iteration 8
+Elapsed time: 27.1062 s
+MSE: 0.1603
+WAPE: 28.6108
+R2: 0.7832
+
+Iteration 9
+Elapsed time: 26.7597 s
+MSE: 0.2137
+WAPE: 27.1073
+R2: 0.8098
+
+
+
+
+
+Linear Regression
+Total Averaged MSE: 0.185
+Total Averaged WAPE: 32.271
+Total Averaged R2: 0.757
+
+XGBoost
+Total Averaged MSE: 0.157
+Total Averaged WAPE: 29.454
+Total Averaged R2: 0.796
+
+Random Forest
+Total Averaged MSE: 0.142
+Total Averaged WAPE: 27.526
+Total Averaged R2: 0.818
