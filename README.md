@@ -1,4 +1,4 @@
-[Português](README.pt-br.md.md)
+[Português](README.pt-br.md)
 # Energy Prediction Algorithm
 ## Preprocessing
 In order to execute the available algorithms, first, one must create a folder to put the datasets.
