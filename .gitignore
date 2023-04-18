@@ -1,2 +1,2 @@
-data/BANES_v2.csv
-data/BANES_v4_featureimportance.csv
+*.csv
+.gitignore

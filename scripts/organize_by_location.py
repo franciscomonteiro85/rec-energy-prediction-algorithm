@@ -27,11 +27,11 @@ def main():
         raise Exception("File format not supported")
     if 'Time' in df.columns:
         dateindex = df['Time']
-        df.drop(['Time'], axis=1, inplace=True)
+        df = df.drop(['Time'], axis=1)
     else:
         num_samples_per_house = df.shape[0]
         dateindex = pd.date_range(start_date, periods=num_samples_per_house, freq='15T', name='Time').to_frame(index=False)
-
+    print(df.shape)
     house_list = []
     test = dateindex
     for i in df:
@@ -43,7 +43,7 @@ def main():
     for i in house_list[1:]:
         df_location = pd.concat([df_location, i], axis=0)
     df_location.reset_index(drop=True, inplace=True)
-    df_location.to_pickle(writefile)
+    df_location.to_csv(writefile, index=False)
     print(df_location.shape)
 
 if __name__ == "__main__":
