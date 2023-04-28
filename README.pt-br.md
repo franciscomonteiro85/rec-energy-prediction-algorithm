@@ -31,7 +31,7 @@ Algumas visualizações dos dados em diferentes períodos de tempo (o ano todo, 
 Gráficos comparando o desempenho dos diferentes modelos. Os gráficos criados são salvos na pasta "images".
 
 #### Shared_Dataset_Creation
-Agregação das múltiplas casas do dataset compartilhado em um único arquivo.
+Agregação das múltiplas casas do dataset partilhado em um único arquivo.
 
 #### REC_Energy_Algorithm
 Primeiros testes no dataset, desatualizados e usando apenas um prédio para treinar o modelo.
@@ -43,6 +43,7 @@ Testes no dataset Porto para ver se simplesmente atribuir o valor anterior de co
 A pasta "data" contém vários arquivos (pickle e csv) dos dados utilizados.
 The full shared dataset organized by location and with meteorology data is available in shared_meteo.csv
 O dataset partilhado completo com dados de meteorologia, está disponível em shared_meteo.csv.
+coopernico_50houses_location.csv contém dados de consumo de energia de 50 casas disponibilizadas pela Coopernico em períodos de tempo diferentes.
 shared_1year.csv contém o dataset partilhado com dados de consumo de energia de 7 casas ao longo de um ano.
 shared_total.csv contém as mesmas informações das casas, mas por um período mais longo (algumas casas apenas alguns meses, outras mais).
 porto.pkl contém o dataset do Porto organizado por localização (cada localização é uma casa diferente).

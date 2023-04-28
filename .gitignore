@@ -1,3 +1,4 @@
 *.csv
 .gitignore
 !shared_meteo.csv
+!coopernico_50houses_location.csv
