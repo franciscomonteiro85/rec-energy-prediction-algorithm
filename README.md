@@ -43,6 +43,7 @@ than the models. Baseline to compare with the other models.
 
 ## Available data
 Folder "data" contains multiple files (pickles and csv) of the used data. 
+The full shared dataset organized by location and with meteorology data is available in shared_meteo.csv
 shared_1year.csv contains the Shared dataset with data of 7 houses' energy consumption over a year
 shared_total.csv contains the same houses information, but for a longer period of time (some houses only some months others more).
 porto.pkl contains the Porto Dataset organized by location (each location is a different house).

@@ -41,7 +41,9 @@ Testes no dataset Porto para ver se simplesmente atribuir o valor anterior de co
 
 ## Dados disponíveis
 A pasta "data" contém vários arquivos (pickle e csv) dos dados utilizados.
-shared_1year.csv contém o dataset compartilhado com dados de consumo de energia de 7 casas ao longo de um ano.
+The full shared dataset organized by location and with meteorology data is available in shared_meteo.csv
+O dataset partilhado completo com dados de meteorologia, está disponível em shared_meteo.csv.
+shared_1year.csv contém o dataset partilhado com dados de consumo de energia de 7 casas ao longo de um ano.
 shared_total.csv contém as mesmas informações das casas, mas por um período mais longo (algumas casas apenas alguns meses, outras mais).
 porto.pkl contém o dataset do Porto organizado por localização (cada localização é uma casa diferente).
 Os pickles das estações são dados meteorológicos de Aveiro e Viseu para usar juntamente com os dados de consumo de energia.
