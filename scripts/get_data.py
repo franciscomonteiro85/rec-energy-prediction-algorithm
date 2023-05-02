@@ -42,7 +42,7 @@ def group_house_sheets(files_list, dir_path):
                 if(startCollecting):
                     current_row += 1
         new_file_row += current_row
-    new_wb.save("../../datasets/Our_Dataset/" + cpe + ".xlsx")
+    new_wb.save("../datasets/Shared_Dataset/" + cpe + ".xlsx")
     
 def rename_sheets(files_list, dir_path):
     for f in files_list:
@@ -62,8 +62,18 @@ def organize_by_datetime(files_list):
     files_list.sort()
     return files_list
 
+def check_metric_records(files_list, dir_path):
+     for f in files_list:
+        if f.endswith(".xlsx"):
+            wb = load_workbook(filename=dir_path+"/"+f)
+            sheet = wb.active
+            current_row = 0
+            for row in sheet:
+                for cell in row:
+                    if(isinstance(cell.value, str) and (cell.value.startswith("Consumo") or cell.value.startswith("Pot"))):
+                        print(cell.value)
 def main():
-    path = "../../datasets/Curvas_de_Consumo/"
+    path = "../datasets/ElectrComsump"
 
     dirs = get_all_dirs(path)[0]
     for dir in dirs:

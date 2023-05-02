@@ -1,0 +1,88 @@
+
+----------------------------
+
+Linear Regression
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 31.1954 s
+MSE: 0.2980
+WAPE: 32.35
+R2: 0.7659
+
+Iteration 1
+Elapsed time: 31.2934 s
+MSE: 0.2192
+WAPE: 31.57
+R2: 0.7889
+
+Iteration 2
+Elapsed time: 31.1573 s
+MSE: 0.1649
+WAPE: 31.44
+R2: 0.7671
+
+Iteration 3
+Elapsed time: 31.4713 s
+MSE: 0.2150
+WAPE: 34.14
+R2: 0.7548
+
+Iteration 4
+Elapsed time: 31.4034 s
+MSE: 0.1524
+WAPE: 30.65
+R2: 0.7604
+
+----------------------------
+
+XGBoost
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 9.2575 s
+MSE: 0.2369
+WAPE: 28.74
+R2: 0.8139
+
+Iteration 1
+Elapsed time: 6.1007 s
+MSE: 0.1888
+WAPE: 28.50
+R2: 0.8181
+
+Iteration 2
+Elapsed time: 5.9226 s
+MSE: 0.1335
+WAPE: 27.84
+R2: 0.8114
+
+Iteration 3
+Elapsed time: 6.0257 s
+MSE: 0.1606
+WAPE: 30.22
+R2: 0.8168
+
+Iteration 4
+Elapsed time: 6.1233 s
+MSE: 0.1251
+WAPE: 27.44
+R2: 0.8033
+
+
+
+
+
+Linear Regression
+Total Averaged MSE: 0.21
+Total Averaged WAPE: 32.03
+Total Averaged R2: 0.767
+
+XGBoost
+Total Averaged MSE: 0.169
+Total Averaged WAPE: 28.548
+Total Averaged R2: 0.813
