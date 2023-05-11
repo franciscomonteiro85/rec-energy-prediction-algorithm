@@ -1,4 +1,4 @@
 *.csv
 *.pkl
+data/
 .gitignore
-!coopernico_50houses_location.csv
