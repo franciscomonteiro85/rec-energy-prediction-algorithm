@@ -2,3 +2,4 @@
 *.pkl
 data/
 .gitignore
+models/
