@@ -1,0 +1,6 @@
+Image named final_selected.png has the following features:
+energy_lag_1	energy_lag_2	energy_lag_3	energy_lag_4	energy_lag_96	energy_lag_672	DayOfWeek	Hour
+
+Image named final_selected_7days.png has the following features:
+
+energy_lag_1	energy_lag_2	energy_lag_3	energy_lag_4	energy_lag_96	energy_lag_192	energy_lag_288	energy_lag_384	energy_lag_480	energy_lag_576	energy_lag_672	DayOfWeek	Hour	Energy
