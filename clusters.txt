@@ -1,0 +1,39 @@
+Cluster List
+
+[array([1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 
+array([2, 2, 0, 2, 2, 0, 1, 0, 1, 0, 1, 1, 2, 2, 2, 0, 0, 2, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 0, 1, 2, 2, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 
+array([0, 3, 1, 3, 0, 1, 2, 1, 2, 1, 2, 2, 3, 3, 0, 1, 3, 0, 3, 1, 3, 1, 0, 3, 0, 0, 1, 3, 0, 0, 1, 2, 0, 0, 3, 3, 0, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]), 
+array([2, 1, 0, 1, 2, 0, 3, 0, 3, 0, 3, 3, 1, 4, 4, 0, 4, 4, 4, 0, 1, 0, 2, 1, 4, 4, 0, 4, 4, 2, 0, 3, 2, 4, 4, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 
+array([3, 5, 0, 5, 3, 0, 2, 0, 2, 0, 2, 2, 1, 5, 4, 0, 4, 4, 4, 0, 1, 0, 3, 1, 4, 4, 0, 4, 1, 3, 0, 2, 3, 4, 4, 1, 3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 
+array([3, 2, 1, 4, 3, 1, 0, 1, 0, 1, 0, 4, 2, 6, 6, 1, 6, 6, 6, 1, 2, 1, 3, 2, 6, 6, 1, 5, 5, 3, 1, 0, 3, 6, 6, 2, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]), 
+array([2, 0, 3, 0, 2, 3, 4, 3, 4, 3, 4, 7, 5, 0, 6, 3, 1, 6, 1, 3, 5, 3, 2, 5, 6, 6, 1, 6, 5, 2, 3, 4, 2, 6, 1, 5, 2, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]), 
+array([1, 6, 8, 6, 1, 2, 4, 8, 4, 2, 4, 7, 3, 6, 5, 2, 0, 5, 0, 2, 3, 2, 1, 3, 5, 5, 0, 5, 5, 1, 8, 4, 1, 5, 0, 3, 1, 3, 3, 2, 8, 2, 2, 8, 8, 8, 2, 2, 8, 8]), 
+array([1, 4, 8, 4, 1, 0, 7, 8, 3, 0, 3, 9, 2, 4, 6, 0, 5, 6, 5, 0, 2, 0, 1, 2, 6, 6, 5, 6, 7, 1, 8, 7, 1, 6, 5, 2, 1, 2, 2, 0, 8, 0, 0, 8, 8, 8, 0, 0, 8, 8]), 
+array([ 0,  4, 10,  4,  0,  1,  2, 10,  2,  1,  2,  8,  3,  4,  5,  1,  7, 5,  7,  1,  3,  1,  6,  3,  5,  5,  7,  9,  9,  6, 10,  2,  0,  5, 7,  3,  0,  3,  3,  1, 10,  1,  1, 10, 10, 10,  1,  1, 10, 10]), 
+array([ 1,  5,  6,  5,  1,  0,  4,  6, 11,  0, 11,  7,  3,  5,  8,  0,  9, 8,  9,  0,  2,  0,  1,  2,  8,  8,  9, 10, 10,  1,  6,  4,  1,  8, 9,  2,  1,  3,  3,  0,  6,  0,  0,  6,  6,  6,  0,  0,  6,  6]), 
+array([ 1, 11,  0,  4,  3,  7,  2,  0,  9,  7,  9,  6,  5, 11,  1,  7,  8, 1,  8,  7, 10,  7,  3, 10,  1,  1,  8, 12, 12,  3,  0,  2,  3,  1, 8, 10,  3,  5,  5,  7,  0,  7,  7,  0,  0,  0,  7,  7,  0,  0]), 
+array([ 4, 11,  9,  8,  4,  0, 10,  9,  2,  0,  2,  7,  1, 11,  3,  0,  6, 3,  6,  0, 12,  0,  4, 12,  3,  3,  6,  5,  5, 13,  9, 10,  4,  3, 6, 12,  4,  1,  1,  0,  9,  0,  0,  9,  9,  9,  0,  0,  9,  9]), 
+array([ 0,  6, 12,  9,  8,  1, 11, 14,  2,  1,  2,  5, 10,  6,  0,  1,  7, 0,  7,  1,  3,  1,  8,  3,  0,  0,  7, 13, 13,  4, 14, 11,  8,  0, 7,  3,  8, 10, 10,  1, 12,  1,  1, 14, 12, 12,  1,  1, 12, 12]), 
+array([ 5,  8,  2, 13,  1,  7, 11, 14,  4,  7,  4,  3, 10,  8,  5,  7,  0, 12,  0,  7,  6,  7,  1,  6, 12,  5,  0,  9,  9, 15, 14, 11,  1, 12, 0,  6,  1, 10, 10,  7,  2,  7,  7, 14,  2,  2,  7,  7,  2,  2]),]
+
+Inertia List
+
+[503.10857042167976, 382.2286167259617, 307.718765111704, 228.57763934043803, 185.05534253267072, 155.44296863352542, 114.38119313427902, 92.89045823606689, 78.67842184682272, 66.77004076478397, 53.183350741613964, 44.737360785916934, 35.905229577034426, 29.085062752574927, 21.293566256211776]
+
+Model List
+
+[TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=2,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=4,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=5,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=6,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=7,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=8,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=9,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=10,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=11,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=12,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=13,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=14,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=15,
+                 n_init=3), TimeSeriesKMeans(dtw_inertia=True, max_iter=10, metric='dtw', n_clusters=16,
+                 n_init=3)]
