@@ -1,0 +1,190 @@
+
+----------------------------
+
+Linear Regression
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 4.3800 s
+MSE: 0.0032
+WAPE: 36.76
+R2: 0.5729
+
+Iteration 1
+Elapsed time: 4.3664 s
+MSE: 0.0024
+WAPE: 39.80
+R2: 0.7695
+
+Iteration 2
+Elapsed time: 4.3874 s
+MSE: 0.0069
+WAPE: 34.49
+R2: 0.6709
+
+Iteration 3
+Elapsed time: 4.3585 s
+MSE: 0.0073
+WAPE: 39.25
+R2: 0.6792
+
+Iteration 4
+Elapsed time: 4.3761 s
+MSE: 0.0026
+WAPE: 33.66
+R2: 0.7646
+
+Iteration 5
+Elapsed time: 4.3650 s
+MSE: 0.0031
+WAPE: 36.99
+R2: 0.6856
+
+Iteration 6
+Elapsed time: 4.3693 s
+MSE: 0.0043
+WAPE: 39.39
+R2: 0.5461
+
+Iteration 7
+Elapsed time: 4.3695 s
+MSE: 0.0029
+WAPE: 38.13
+R2: 0.6204
+
+Iteration 8
+Elapsed time: 4.3814 s
+MSE: 0.0027
+WAPE: 43.03
+R2: 0.5928
+
+Iteration 9
+Elapsed time: 4.3815 s
+MSE: 0.0048
+WAPE: 35.08
+R2: 0.6935
+
+----------------------------
+
+XGBoost
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 1.0801 s
+MSE: 0.0032
+WAPE: 36.97
+R2: 0.5683
+
+Iteration 1
+Elapsed time: 0.8132 s
+MSE: 0.0027
+WAPE: 39.81
+R2: 0.7415
+
+Iteration 2
+Elapsed time: 0.8645 s
+MSE: 0.0070
+WAPE: 34.02
+R2: 0.6645
+
+Iteration 3
+Elapsed time: 0.8398 s
+MSE: 0.0078
+WAPE: 38.77
+R2: 0.6571
+
+Iteration 4
+Elapsed time: 0.8539 s
+MSE: 0.0026
+WAPE: 33.19
+R2: 0.7576
+
+Iteration 5
+Elapsed time: 0.8482 s
+MSE: 0.0032
+WAPE: 37.27
+R2: 0.6777
+
+Iteration 6
+Elapsed time: 0.8465 s
+MSE: 0.0042
+WAPE: 38.72
+R2: 0.5597
+
+Iteration 7
+Elapsed time: 0.8424 s
+MSE: 0.0029
+WAPE: 38.12
+R2: 0.6204
+
+Iteration 8
+Elapsed time: 0.8329 s
+MSE: 0.0027
+WAPE: 42.76
+R2: 0.5970
+
+Iteration 9
+Elapsed time: 0.8289 s
+MSE: 0.0047
+WAPE: 34.20
+R2: 0.6951
+
+----------------------------
+
+Random Forest
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 22.7471 s
+MSE: 0.0033
+WAPE: 38.94
+R2: 0.5482
+
+Iteration 1
+Elapsed time: 22.3182 s
+MSE: 0.0031
+WAPE: 44.60
+R2: 0.7030
+
+Iteration 2
+Elapsed time: 22.4435 s
+MSE: 0.0070
+WAPE: 33.77
+R2: 0.6675
+
+Iteration 3
+Elapsed time: 22.2245 s
+MSE: 0.0079
+WAPE: 39.98
+R2: 0.6511
+
+Iteration 4
+Elapsed time: 21.8693 s
+MSE: 0.0026
+WAPE: 32.91
+R2: 0.7575
+
+
+
+
+
+Linear Regression
+Total Averaged MSE: 0.004
+Total Averaged WAPE: 37.658
+Total Averaged R2: 0.66
+
+XGBoost
+Total Averaged MSE: 0.004
+Total Averaged WAPE: 37.383
+Total Averaged R2: 0.654
+
+Random Forest
+Total Averaged MSE: 0.005
+Total Averaged WAPE: 38.04
+Total Averaged R2: 0.665
