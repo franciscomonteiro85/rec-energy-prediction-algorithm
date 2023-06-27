@@ -1,0 +1,72 @@
+
+----------------------------
+
+XGBoost
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 230.2781 s
+MSE: 0.1544
+WAPE: 20.96
+R2: 0.8787
+
+Iteration 1
+Elapsed time: 245.8847 s
+MSE: 0.1206
+WAPE: 20.90
+R2: 0.8607
+
+Iteration 2
+Elapsed time: 246.9380 s
+MSE: 0.0739
+WAPE: 21.37
+R2: 0.8727
+
+Iteration 3
+Elapsed time: 244.3177 s
+MSE: 0.0391
+WAPE: 14.42
+R2: 0.9332
+
+Iteration 4
+Elapsed time: 244.1556 s
+MSE: 0.0664
+WAPE: 15.82
+R2: 0.9226
+
+Iteration 5
+Elapsed time: 248.3924 s
+MSE: 0.0255
+WAPE: 13.40
+R2: 0.9492
+
+Iteration 6
+Elapsed time: 242.7832 s
+MSE: 0.0850
+WAPE: 15.97
+R2: 0.9061
+
+Iteration 7
+Elapsed time: 239.4422 s
+MSE: 0.1142
+WAPE: 20.45
+R2: 0.8649
+
+Iteration 8
+Elapsed time: 240.9087 s
+MSE: 0.1222
+WAPE: 18.63
+R2: 0.8836
+
+Iteration 9
+Elapsed time: 241.0202 s
+MSE: 0.0532
+WAPE: 23.52
+R2: 0.8589
+
+XGBoost
+Total Averaged MSE: 0.085
+Total Averaged WAPE: 18.544
+Total Averaged R2: 0.893

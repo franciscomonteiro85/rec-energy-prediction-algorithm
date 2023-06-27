@@ -4,3 +4,6 @@ data/
 .gitignore
 models/
 retrieve_data.py
+dont-include-on-thesis
+.ipynb_checkpoints
+scripts/__pycache__
