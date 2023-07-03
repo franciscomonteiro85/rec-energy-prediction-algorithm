@@ -1,0 +1,15 @@
+No ML - Previous 15
+No_ML
+MSE: 0.2232
+WAPE: 0.2867
+R2: 0.8098
+No ML - Previous Day
+No_ML
+MSE: 0.863
+WAPE: 0.6026
+R2: 0.2648
+No ML - Previous Week
+No_ML
+MSE: 1.1994
+WAPE: 0.656
+R2: -0.0214
