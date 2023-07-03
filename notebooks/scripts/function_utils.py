@@ -151,18 +151,20 @@ def past_timesteps(df, number_of_timesteps):
 
 def train_test_split_timeseries(df, train_size=0.8):
     df_train, df_test = [], []
-    n_rows = df.shape[0]
-    n_columns = df.shape[1]
     column_names = df.columns
     for i in df.Location.unique():
         df_loc = df[df.Location == i]
-        train_size = int(df_loc.shape[0] * train_size)
-        train = df_loc.iloc[:train_size, :]
-        test = df_loc.iloc[train_size:, :]
+        t_size = int(df_loc.shape[0] * train_size)
+        train = df_loc.iloc[:t_size, :]
+        test = df_loc.iloc[t_size:, :]
         df_train.append(train)
         df_test.append(test)
-    train = pd.DataFrame(np.array(df_train).reshape(n_rows, n_columns), columns=column_names)
-    test = pd.DataFrame(np.array(df_test).reshape(n_rows, n_columns), columns=column_names)
+    for d in df_train:
+        train = d if train.empty else pd.concat([train, d], axis=0)
+    for d in df_test:
+        test = d if test.empty else pd.concat([test, d], axis=0)
+    train.columns = column_names
+    test.columns = column_names
     return train, test
 
 # def train_test_split_timeseries(df, train_size=0.8):
@@ -182,8 +184,10 @@ def train_test_split_timeseries(df, train_size=0.8):
 
 def test_leave_house_out(df, estimator, locations, filename, split_timeseries=False, train_size=0.8):
     if(split_timeseries):
+        print("split timeseries")
         train, test = train_test_split_timeseries(df,train_size=train_size)
     else:
+        print("split location")
         test = df[df['Location'].isin(locations)]
         train = df[~df['Location'].isin(locations)]
     print("Train set: ", train.shape)
