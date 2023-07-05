@@ -6,18 +6,11 @@ from sklearn.model_selection import train_test_split, cross_validate
 from sklearn.preprocessing import PolynomialFeatures, MinMaxScaler
 import time
 import math
+from cuml.metrics import mean_squared_error as mse_gpu
+from cuml.metrics import r2_score as r2_gpu
+import cudf
+import cupy
 from tqdm import tqdm
-
-# Clustering
-def select_past_timesteps(file_df, cluster, selected_columns=[]):
-    df = pd.read_csv(file_df)
-    if selected_columns:
-        df_cluster = df[selected_columns]
-        if 'Location' in selected_columns:
-            df_cluster = df_cluster[df_cluster.Location.isin(cluster)]
-    else:
-        df_cluster = df[df.Location.isin(cluster)]
-    return df_cluster
 
 # Aggregated
 def plot_results(preds: np.array, actuals: np.array, title: str):
@@ -77,8 +70,11 @@ def prepare_polynomial(X, y, deg):
     X_train, X_test, y_train, y_test = train_test_split(poly_features, y, train_size=0.8)
     return X_train, X_test, y_train, y_test
 
-def normalize_training(X_train, feat_range=(0,1)):
-    scaler = MinMaxScaler(feature_range=feat_range)
+def normalize_training(X_train, feat_range=(0,1), gpu=False):
+    if(gpu):
+        scaler = cuMinMaxScaler()
+    else:
+        scaler = MinMaxScaler(feature_range=feat_range)
     scaler.fit(X_train)
     X_train = scaler.transform(X_train)
     return X_train, scaler
@@ -121,14 +117,18 @@ def truncate_metric(metric):
     m = math.trunc(10000 * metric) / 10000
     return m 
     
-def performance_metrics(preds: np.array, actuals: np.array, filename=None):
+def performance_metrics(preds, actuals, filename=None, gpu=False):
 
     # calculate performance metrics
-    
-    mse = truncate_metric(mean_squared_error(actuals, preds))
-    rmse = truncate_metric(mean_squared_error(actuals, preds, squared=False))
-    wape = truncate_metric(np.sum(np.abs(preds - actuals)) / np.sum(np.abs(actuals))) * 100
-    r2 = truncate_metric(r2_score(actuals, preds))
+    if(gpu):
+        mse = truncate_metric(mse_gpu(actuals, preds))
+        wape = truncate_metric(cupy.sum(cupy.abs(preds - actuals)) / cupy.sum(cupy.abs(actuals)) * 100)
+        r2 = truncate_metric(r2_gpu(actuals, preds))
+    else:
+        mse = truncate_metric(mean_squared_error(actuals, preds))
+        rmse = truncate_metric(mean_squared_error(actuals, preds, squared=False))
+        wape = truncate_metric(np.sum(np.abs(preds - actuals)) / np.sum(np.abs(actuals))) * 100
+        r2 = truncate_metric(r2_score(actuals, preds))
     
     # print performance metrics
     if(filename != None):
@@ -149,7 +149,7 @@ def past_timesteps(df, number_of_timesteps):
     df.reset_index(drop=True, inplace=True)
     return df
 
-def train_test_split_timeseries(df, train_size=0.8):
+def train_test_split_timeseries(df, train_size=0.8, cv=0):
     df_train, df_test = [], []
     column_names = df.columns
     for i in df.Location.unique():
@@ -167,25 +167,10 @@ def train_test_split_timeseries(df, train_size=0.8):
     test.columns = column_names
     return train, test
 
-# def train_test_split_timeseries(df, train_size=0.8):
-#     column_names = df.columns
-#     tmp_tr = pd.DataFrame()
-#     tmp_te = pd.DataFrame()
-#     for i in df.Location.unique():
-#         df_loc = df[df.Location == i]
-#         train_size = int(df_loc.shape[0] * train_size)
-#         train = df_loc.iloc[:train_size, :]
-#         test = df_loc.iloc[train_size:, :]
-#         tmp_tr = pd.concat([tmp_tr, train], axis=1) if not tmp_tr.empty else train
-#         tmp_te = pd.concat([tmp_te, test], axis=1) if not tmp_te.empty else test
-#     train = pd.DataFrame(tmp_tr, columns=column_names)
-#     test = pd.DataFrame(tmp_te, columns=column_names)
-#     return train, test
-
-def test_leave_house_out(df, estimator, locations, filename, split_timeseries=False, train_size=0.8):
+def test_leave_house_out(df, estimator, locations, filename, split_timeseries=False, train_size=0.8, gpu=False, cv=0):
     if(split_timeseries):
         print("split timeseries")
-        train, test = train_test_split_timeseries(df,train_size=train_size)
+        train, test = train_test_split_timeseries(df, train_size=train_size, cv=cv)
     else:
         print("split location")
         test = df[df['Location'].isin(locations)]
@@ -197,7 +182,7 @@ def test_leave_house_out(df, estimator, locations, filename, split_timeseries=Fa
     y_train = train['Energy']
     y_test = test['Energy']
 
-    X_train_norm, scaler = normalize_training(X_train)
+    X_train_norm, scaler = normalize_training(X_train, gpu=gpu)
     X_test_norm = scaler.transform(X_test)
     model = estimator
     init = time.time()
@@ -205,7 +190,7 @@ def test_leave_house_out(df, estimator, locations, filename, split_timeseries=Fa
     y_pred = model.predict(X_test_norm)
     end = time.time()
     print('Elapsed time: {:.4f} s'.format(end - init), file=filename)
-    mse, wape, r2 = performance_metrics(y_pred, y_test.values.reshape(-1), filename)
+    mse, wape, r2 = performance_metrics(y_pred, y_test.values.reshape(-1), filename, gpu=gpu)
     return mse, wape, r2, model
 
 # Individual
@@ -284,5 +269,41 @@ def show_graphic_per_timestep(metrics_list, number_of_houses):
     plt.ylabel('R2')
     plt.show()
 
+class cuMinMaxScaler():
+    def __init__(self):
+        self.feature_range = (0,1)
+
+    def _reset(self):
+
+        if hasattr(self, 'scale_'):
+            del self.scale_
+            del self.min_
+
+    def fit(self, X): #X is assumed to be a cuDF dataframe, no type checking
+
+        self._reset()        
+
+        X = X.dropna()
+
+        data_min = X.min(axis = 0) #cuDF series
+        data_max = X.max(axis = 0) #cuDF series
+
+        data_range = data_max - data_min #cuDF series
+
+        data_range[data_range==0] = 1 #replaced with 1 is range is 0
+
+        feature_range = self.feature_range
+
+        self.scale_ = (feature_range[1] - feature_range[0]) / data_range # element-wise divison, produces #cuDF series
+        self.min_ = feature_range[0] - data_min * self.scale_ # element-wise multiplication, produces #cuDF series
+
+        return self
+
+    def transform(self, X):
+
+        X *= self.scale_ # element-wise divison, match dataframe column to series index
+        X += self.min_ # element-wise addition, match dataframe column to series index
+
+        return X
 
  #["energy_lag_1", "energy_lag_2", "energy_lag_3", "energy_lag_4", "energy_lag_96", "energy_lag_192", "energy_lag_288", "energy_lag_384", "energy_lag_480", "energy_lag_576", "energy_lag_672", "DayOfWeek", "Hour"]

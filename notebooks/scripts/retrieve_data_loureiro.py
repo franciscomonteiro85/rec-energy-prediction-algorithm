@@ -40,6 +40,7 @@ def get_datetime_dataframe(json_obj):
 
 def create_full_datetime_dataframe(json_obj):
     dictio = dict()
+    n_production = 0
     for i in json_obj:
         dia = i["dia"]
         hora = re.sub('\D', '', i["hora"][:2])
@@ -59,7 +60,6 @@ def join_dataframes(energy):
             df1 = pd.merge(df1, df2, on='Time', how='outer')
             df1 = df1.sort_values(by="Time")
             df1.reset_index(drop=True, inplace=True)
-
     return df1
 
 response = login()
@@ -69,30 +69,52 @@ headers = {'Accept': 'application/json', 'Authorization': token}
 url = "https://api.comsolve.pt/internal/curvas/getConsumosPerdasCurvasCargaPT"
 
 body = {
-    "dataInicio": "2022-01-01",
-    "dataFim": "2023-06-30",
+    "dataInicio": "2022-05-05",
+    "dataFim": "2023-06-06",
     "cpe": "anonymous_1"
 }
 energy = []
+n_25000, n_30000, n_35000, n_production = 0,0,0,0
+
 for i in tqdm(range(1,173)):
     body["cpe"] = "anonymous_" + str(i)
     response = retrieve_data(url, headers, body)
     series = []
     cpe = "CPE_" + str(i)
     json_obj = response.json()[cpe]["consumos"]
-
+    
     series = create_full_datetime_dataframe(json_obj)
     series = pd.DataFrame.from_dict(series, orient="index")
     series["Time"] = series.index
     series = series.iloc[:,[1,0]]
     series = series.rename(columns={0: "Energy_{}".format(str(i))})
     series.reset_index(drop=True, inplace=True)
+    number_of_measurements = series.shape[0] - series.isna().sum().sum()
+    print(number_of_measurements)
+    if(number_of_measurements > 0):
+        n_production += 1
+    if(number_of_measurements >= 25000):
+        n_25000 += 1
+    if(number_of_measurements >= 30000):
+        n_30000 += 1
+    if(number_of_measurements >= 35000):
+        n_35000 += 1
     energy.append(series)
 
 merged_df = join_dataframes(energy)
 
-merged_df.to_csv("merged_loureiro.csv", index=None)
+#merged_df.to_csv("merged_loureiro.csv", index=None)
+print("Number of houses with production: ", n_production)
+print("Number of houses with 25000 plus measurements: ", n_25000)
+print("Number of houses with 30000 plus measurements: ", n_30000)
+print("Number of houses with 35000 plus measurements: ", n_35000)
 
+#Consumption
 #Number of houses with 25000 plus measurements: 134
 #Number of houses with 30000 plus measurements: 112
 #Number of houses with 35000 plus measurements: 81
+
+#Production
+#Number of houses with 25000 plus measurements: 0
+#Number of houses with 30000 plus measurements: 0
+#Number of houses with 35000 plus measurements: 0
