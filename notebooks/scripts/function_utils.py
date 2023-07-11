@@ -269,6 +269,34 @@ def show_graphic_per_timestep(metrics_list, number_of_houses):
     plt.ylabel('R2')
     plt.show()
 
+def add_energy_variation(df):
+    # Create shifted series
+    lag = df.Energy.shift(1).dropna()
+    lag.reset_index(drop=True, inplace=True)
+    
+    # Cut first row due to no variation
+    df_tmp = df.Energy.iloc[1:]
+    df_tmp.reset_index(drop=True, inplace=True)
+    
+    # Divide actuals per last 15-minute interval, adding 0.00001 to avoid division by zero
+    variation = np.divide(df_tmp,(lag + 0.00001))
+
+    # Subtract by one to present the positive or negative difference on the energy
+    variation_1 = np.subtract(variation, 1)
+
+    # Insert first value as 0 as it doesn't have previous comparison
+    variation_2 = pd.concat([pd.Series([0]), variation_1])
+    variation_2.reset_index(drop=True, inplace=True)
+
+    # Add Variation to Dataframe and relocate Energy to last column of df
+    df["Variation"] = variation_2
+    energy = df.Energy
+    df.drop("Energy", axis=1, inplace=True)
+    df["Energy"] = energy
+    df.dropna(inplace=True)
+    
+    return df
+
 class cuMinMaxScaler():
     def __init__(self):
         self.feature_range = (0,1)
