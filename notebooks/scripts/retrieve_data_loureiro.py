@@ -47,7 +47,9 @@ def create_full_datetime_dataframe(json_obj):
         minuto = i["minuto"][:2].strip()
         data = dia + " " + hora + ":" + (minuto if len(minuto) == 2 else minuto + minuto) + ":" + "00"
         dictio[data] = i['energiaEntrada']
-    return dictio
+        if i['energiaSaida'] != None:
+            n_production += 1
+    return dictio, n_production
 
 def join_dataframes(energy):
     first = 1
@@ -74,7 +76,7 @@ body = {
     "cpe": "anonymous_1"
 }
 energy = []
-n_25000, n_30000, n_35000, n_production = 0,0,0,0
+n_25000, n_30000, n_35000, n_houses_with_prod = 0,0,0,0
 
 for i in tqdm(range(1,173)):
     body["cpe"] = "anonymous_" + str(i)
@@ -83,16 +85,15 @@ for i in tqdm(range(1,173)):
     cpe = "CPE_" + str(i)
     json_obj = response.json()[cpe]["consumos"]
     
-    series = create_full_datetime_dataframe(json_obj)
+    series, n_production = create_full_datetime_dataframe(json_obj)
     series = pd.DataFrame.from_dict(series, orient="index")
     series["Time"] = series.index
     series = series.iloc[:,[1,0]]
     series = series.rename(columns={0: "Energy_{}".format(str(i))})
     series.reset_index(drop=True, inplace=True)
     number_of_measurements = series.shape[0] - series.isna().sum().sum()
-    print(number_of_measurements)
-    if(number_of_measurements > 0):
-        n_production += 1
+    if(n_production > 0):
+        n_houses_with_prod += 1
     if(number_of_measurements >= 25000):
         n_25000 += 1
     if(number_of_measurements >= 30000):
@@ -104,7 +105,7 @@ for i in tqdm(range(1,173)):
 merged_df = join_dataframes(energy)
 
 #merged_df.to_csv("merged_loureiro.csv", index=None)
-print("Number of houses with production: ", n_production)
+print("Number of houses with production: ", n_houses_with_prod)
 print("Number of houses with 25000 plus measurements: ", n_25000)
 print("Number of houses with 30000 plus measurements: ", n_30000)
 print("Number of houses with 35000 plus measurements: ", n_35000)

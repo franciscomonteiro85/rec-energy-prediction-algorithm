@@ -285,11 +285,14 @@ def add_energy_variation(df):
     variation_1 = np.subtract(variation, 1)
 
     # Insert first value as 0 as it doesn't have previous comparison
-    variation_2 = pd.concat([pd.Series([0]), variation_1])
+    variation_2 = pd.concat([pd.Series([0,0]), variation_1])
     variation_2.reset_index(drop=True, inplace=True)
 
     # Add Variation to Dataframe and relocate Energy to last column of df
     df["Variation"] = variation_2
+    first_time, second_time = df.Time.iloc[0], df.Time.iloc[1]
+    df.loc[df.Time == first_time, 'Variation'] = 0
+    df.loc[df.Time == second_time, 'Variation'] = 0
     energy = df.Energy
     df.drop("Energy", axis=1, inplace=True)
     df["Energy"] = energy
