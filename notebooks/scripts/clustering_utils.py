@@ -58,7 +58,7 @@ def cluster_predict(df, estimators, names):
 def aggregate_cluster_predictions(pred_list, actual_list, names, filename):
     print("Aggregating predictions...")
     dictio, dictio_act = {}, {}
-    mse_list, wape_list, r2_list = [], [], []
+    rmse_list, wape_list, r2_list = [], [], []
     for model in range(0, len(names)):
         preds, actuals = [], []
         for cluster in range(0, len(pred_list)):
@@ -74,11 +74,11 @@ def aggregate_cluster_predictions(pred_list, actual_list, names, filename):
         print("\n----------------------------")
         print("{}".format(names[model]))
         print("----------------------------\n")
-        mse, wape, r2 = performance_metrics(preds, actuals, filename)
-        mse_list.append(mse)
+        rmse, wape, r2 = performance_metrics(preds, actuals, filename)
+        rmse_list.append(rmse)
         wape_list.append(wape)
         r2_list.append(r2)
-    return mse_list, wape_list, r2_list
+    return rmse_list, wape_list, r2_list
 
 def select_past_timesteps(file_df, cluster, selected_columns=[]):
     df = pd.read_csv(file_df)

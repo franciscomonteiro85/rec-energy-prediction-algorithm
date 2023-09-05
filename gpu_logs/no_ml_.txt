@@ -1,0 +1,15 @@
+No ML - Previous 15
+No_ML
+RMSE: 0.4714
+WAPE: 0.3078
+R2: 0.7108
+No ML - Previous Day
+No_ML
+RMSE: 0.805
+WAPE: 0.6385
+R2: 0.1571
+No ML - Previous Week
+No_ML
+RMSE: 0.8547
+WAPE: 0.6855
+R2: 0.0501

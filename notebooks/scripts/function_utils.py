@@ -11,6 +11,7 @@ from cuml.metrics import r2_score as r2_gpu
 import cudf
 import cupy
 from tqdm import tqdm
+from sklearn.model_selection import TimeSeriesSplit
 
 # Aggregated
 def plot_results(preds: np.array, actuals: np.array, title: str):
@@ -37,26 +38,30 @@ def validate(estimator, X_train, y_train):
     scores = cross_validate(estimator, X_train, y_train, scoring=['r2', 'neg_mean_squared_error'])
     return scores
 
-def total_averaged_metrics(metrics_list, filename):
-    
-    print("Total Averaged MSE: {}".format(np.round(sum(i for i, j, k in metrics_list)/len(metrics_list),3)), file=filename)
-    print("Total Averaged WAPE: {}".format(np.round(sum(j for i, j, k in metrics_list)/len(metrics_list),3)), file=filename)
-    print("Total Averaged R2: {}".format(np.round(sum(k for i, j, k in metrics_list)/len(metrics_list),3)), file=filename)
-    print("Total Averaged MSE: {}".format(np.round(sum(i for i, j, k in metrics_list)/len(metrics_list),3)))
-    print("Total Averaged WAPE: {}".format(np.round(sum(j for i, j, k in metrics_list)/len(metrics_list),3)))
-    print("Total Averaged R2: {}".format(np.round(sum(k for i, j, k in metrics_list)/len(metrics_list),3)))
+def total_averaged_metrics(metrics_list, filename=0):
+    rmse = np.round(sum(i for i, j, k in metrics_list)/len(metrics_list),3)
+    wape = np.round(sum(j for i, j, k in metrics_list)/len(metrics_list),3)
+    r2 = np.round(sum(k for i, j, k in metrics_list)/len(metrics_list),3)
+    if(filename != 0):
+        print("Total Averaged RMSE: {}".format(rmse), file=filename)
+        print("Total Averaged WAPE: {}".format(wape), file=filename)
+        print("Total Averaged R2: {}".format(r2), file=filename)
+    print("Total Averaged RMSE: {}".format(rmse))
+    print("Total Averaged WAPE: {}".format(wape))
+    print("Total Averaged R2: {}".format(r2))
+    return rmse, wape, r2
 
 def predict_results(X_train, X_test, y_train, y_test, estimator):
     model, preds = build_model(estimator, X_train, y_train, X_test)
 
-    mse, wape, r2 = performance_metrics(preds, y_test.values)
-    return mse, wape, r2
+    rmse, wape, r2 = performance_metrics(preds.flatten(), y_test.values.flatten())
+    return rmse, wape, r2, model
 
 
 def last_energy_points(df, number_timesteps):
     X = pd.DataFrame()
     for i in range(1, (number_timesteps + 1) ):
-        X[f'lag_{i*15}'] = df.shift(i)
+        X[f'lag_{i}'] = df.shift(i)
     X.dropna(inplace=True)
     X.reset_index(drop=True, inplace=True)
     y = pd.DataFrame(df[number_timesteps:])
@@ -99,6 +104,26 @@ def retrieve_selected_features(df, selected_features, start_date=0):
     y.reset_index(drop=True, inplace=True)
     return X,y
 
+def expanding_window_split(X, y, cv=0, n_splits=5):
+    tscv = TimeSeriesSplit(n_splits=n_splits)
+    for i, (train_index, test_index) in enumerate(tscv.split(X)):
+        if i == cv:
+            #print(f"  Train: {train_index}")
+            #print(f"  Test:  {test_index}")
+            return X.iloc[train_index], X.iloc[test_index], y.iloc[train_index], y.iloc[test_index]
+    return 0
+
+def no_ml_predict(X: np.array, y: np.array):
+    rmse = truncate_metric(mean_squared_error(X, y, squared=False))
+    #wape = mean_absolute_error(X,y) / y.mean()
+    wape = truncate_metric(float(np.sum(np.abs(X - y)) / np.sum(np.abs(y))))
+    r2 = truncate_metric(r2_score(X, y))
+    
+    print('RMSE: %.4f' % rmse)
+    print('WAPE: %.2f' % (wape * 100))
+    print('R2: %.4f' % r2)
+    return rmse, wape, r2
+
 # Algorithms
 def correct_wind_direction(df):
     df.loc[(df["Rumo_Vento_Med"] < 0), "Rumo_Vento_Corrected"] = 0 # SR
@@ -121,25 +146,23 @@ def performance_metrics(preds, actuals, filename=None, gpu=False):
 
     # calculate performance metrics
     if(gpu):
-        mse = truncate_metric(mse_gpu(actuals, preds))
+        rmse = truncate_metric(mse_gpu(actuals, preds, squared=False))
         wape = truncate_metric(cupy.sum(cupy.abs(preds - actuals)) / cupy.sum(cupy.abs(actuals)) * 100)
         r2 = truncate_metric(r2_gpu(actuals, preds))
     else:
-        mse = truncate_metric(mean_squared_error(actuals, preds))
         rmse = truncate_metric(mean_squared_error(actuals, preds, squared=False))
         wape = truncate_metric(np.sum(np.abs(preds - actuals)) / np.sum(np.abs(actuals))) * 100
         r2 = truncate_metric(r2_score(actuals, preds))
     
     # print performance metrics
     if(filename != None):
-        print('MSE: %.4f' % mse, file=filename)
+        print('RMSE: %.4f' % rmse, file=filename)
         print('WAPE: %.2f' % wape, file=filename)
         print('R2: %.4f' % r2, file=filename)
-    print('MSE: %.4f' % mse)
     print('RMSE: %.4f' % rmse)
     print('WAPE: %.2f' % wape)
     print('R2: %.4f' % r2)
-    return mse, wape, r2
+    return rmse, wape, r2
 
 def past_timesteps(df, number_of_timesteps):
     df = df.sort_values(by=['Location', 'Time'])
@@ -190,8 +213,8 @@ def test_leave_house_out(df, estimator, locations, filename, split_timeseries=Fa
     y_pred = model.predict(X_test_norm)
     end = time.time()
     print('Elapsed time: {:.4f} s'.format(end - init), file=filename)
-    mse, wape, r2 = performance_metrics(y_pred, y_test.values.reshape(-1), filename, gpu=gpu)
-    return mse, wape, r2, model
+    rmse, wape, r2 = performance_metrics(y_pred, y_test.values.reshape(-1), filename, gpu=gpu)
+    return rmse, wape, r2, model
 
 # Individual
 def split_train_test_timeseries(X, y, train_size=0.8):
@@ -203,18 +226,18 @@ def split_train_test_timeseries(X, y, train_size=0.8):
     return X_train, X_test, y_train, y_test
 
 def total_averaged_metrics_individual(metrics_list):
-    mse, wape, r2 = 0,0,0,
+    rmse, wape, r2 = 0,0,0,
     for house in metrics_list:
-        mse += sum(i for i, j, k in house)
+        rmse += sum(i for i, j, k in house)
         wape += sum(j for i, j, k in house)
         r2 += sum(k for i, j, k in house)
-    t_mse = np.round(mse/len(metrics_list),3)
+    t_rmse = np.round(rmse/len(metrics_list),3)
     t_wape = np.round(wape/len(metrics_list),3)
     t_r2 = np.round(r2/len(metrics_list),3)
-    print("Total Averaged MSE: {}".format(t_mse))
+    print("Total Averaged RMSE: {}".format(t_rmse))
     print("Total Averaged WAPE: {}".format(t_wape))
     print("Total Averaged R2: {}".format(t_r2))
-    return t_mse, t_wape, t_r2
+    return t_rmse, t_wape, t_r2
 
 def build_predict_show(df, number_timesteps, estimator, selected_features=None, normalize=False, train_size=0.8, start_timestep=1 ):
     full_start = time.time()
@@ -235,26 +258,26 @@ def build_predict_show(df, number_timesteps, estimator, selected_features=None, 
             X_test = scaler.transform(X_test)
         
         model, preds = build_model(estimator, X_train, y_train, X_test)
-        mse, wape, r2 = performance_metrics(preds.reshape(-1), y_test.values.reshape(-1))
-        metrics_list.append((mse, wape,r2))
+        rmse, wape, r2 = performance_metrics(preds.reshape(-1), y_test.values.reshape(-1))
+        metrics_list.append((rmse, wape,r2))
         print("\nElapsed time: %.3f seconds" % (time.time() - start))
     print("\nFull Elapsed time: %.3f seconds" % (time.time() - full_start))
     return model, preds, metrics_list
 
 def show_graphic_per_timestep(metrics_list, number_of_houses):
-    mse_list = []
+    rmse_list = []
     wape_list = []
     r2_list = []
 
     for i in range(0,len(metrics_list)):
-        mse_list.append(metrics_list[i][0][0])
+        rmse_list.append(metrics_list[i][0][0])
         wape_list.append(metrics_list[i][0][1])
         r2_list.append(metrics_list[i][0][2])
         
-    plt.plot(range(0,number_of_houses), mse_list)
-    plt.title('MSE per house')
+    plt.plot(range(0,number_of_houses), rmse_list)
+    plt.title('RMSE per house')
     plt.xlabel('Number of houses')
-    plt.ylabel('MSE')
+    plt.ylabel('RMSE')
     plt.show()
     
     plt.plot(range(0,number_of_houses), wape_list)
