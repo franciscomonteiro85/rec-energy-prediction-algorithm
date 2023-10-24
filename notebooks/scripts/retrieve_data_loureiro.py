@@ -72,7 +72,7 @@ url = "https://api.comsolve.pt/internal/curvas/getConsumosPerdasCurvasCargaPT"
 
 body = {
     "dataInicio": "2022-05-05",
-    "dataFim": "2023-06-06",
+    "dataFim": "2023-09-01",
     "cpe": "anonymous_1"
 }
 energy = []
@@ -104,16 +104,16 @@ for i in tqdm(range(1,173)):
 
 merged_df = join_dataframes(energy)
 
-#merged_df.to_csv("merged_loureiro.csv", index=None)
+merged_df.to_csv("new_loureiro.csv", index=None)
 print("Number of houses with production: ", n_houses_with_prod)
 print("Number of houses with 25000 plus measurements: ", n_25000)
 print("Number of houses with 30000 plus measurements: ", n_30000)
 print("Number of houses with 35000 plus measurements: ", n_35000)
 
 #Consumption
-#Number of houses with 25000 plus measurements: 134
-#Number of houses with 30000 plus measurements: 112
-#Number of houses with 35000 plus measurements: 81
+#Number of houses with 25000 plus measurements: 152
+#Number of houses with 30000 plus measurements: 131
+#Number of houses with 35000 plus measurements: 107
 
 #Production
 #Number of houses with 25000 plus measurements: 0

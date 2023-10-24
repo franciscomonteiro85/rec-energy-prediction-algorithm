@@ -1,0 +1,15 @@
+Baseline - Previous 15
+Baseline
+RMSE: 0.4714
+WAPE: 0.3078
+R2: 0.7108
+Baseline - Previous Day
+Baseline
+RMSE: 0.805
+WAPE: 0.6385
+R2: 0.1571
+Baseline - Previous Week
+Baseline
+RMSE: 0.8547
+WAPE: 0.6855
+R2: 0.0501

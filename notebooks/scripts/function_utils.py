@@ -108,14 +108,11 @@ def expanding_window_split(X, y, cv=0, n_splits=5):
     tscv = TimeSeriesSplit(n_splits=n_splits)
     for i, (train_index, test_index) in enumerate(tscv.split(X)):
         if i == cv:
-            #print(f"  Train: {train_index}")
-            #print(f"  Test:  {test_index}")
             return X.iloc[train_index], X.iloc[test_index], y.iloc[train_index], y.iloc[test_index]
     return 0
 
 def no_ml_predict(X: np.array, y: np.array):
     rmse = truncate_metric(mean_squared_error(X, y, squared=False))
-    #wape = mean_absolute_error(X,y) / y.mean()
     wape = truncate_metric(float(np.sum(np.abs(X - y)) / np.sum(np.abs(y))))
     r2 = truncate_metric(r2_score(X, y))
     
@@ -190,21 +187,44 @@ def train_test_split_timeseries(df, train_size=0.8, cv=0):
     test.columns = column_names
     return train, test
 
+def expanding_window_split_location(df, cv=0, n_splits=10):
+    tscv = TimeSeriesSplit(n_splits=n_splits)
+    X_tr, X_te, y_tr, y_te = pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+    for h in df.Location.unique():
+        house = df[df.Location == h]
+        for i, (train_index, test_index) in enumerate(tscv.split(house)):
+            if i == cv:
+                X_train, X_test, y_train, y_test = house.iloc[train_index], house.iloc[test_index], house.iloc[train_index], house.iloc[test_index]
+                if X_tr.empty:
+                    X_tr, X_te, y_tr, y_te = X_train, X_test, y_train, y_test   
+                else:
+                    X_tr = pd.concat([X_tr,X_train], axis=0)
+                    X_te = pd.concat([X_te,X_test], axis=0)
+                    y_tr = pd.concat([y_tr,y_train], axis=0)
+                    y_te = pd.concat([y_te,y_test], axis=0)
+    return X_tr, X_te, y_tr, y_te
+
 def test_leave_house_out(df, estimator, locations, filename, split_timeseries=False, train_size=0.8, gpu=False, cv=0):
     if(split_timeseries):
         print("split timeseries")
-        train, test = train_test_split_timeseries(df, train_size=train_size, cv=cv)
+        X_train, X_test, y_train, y_test = expanding_window_split_location(df, cv=cv, n_splits=10)
+        print("Train set: ", X_train.shape)
+        print("Test set: ", X_test.shape)
+        X_train = X_train.drop(['Time', 'Location', 'Energy'], axis=1)
+        X_test = X_test.drop(['Time', 'Location', 'Energy'], axis=1)
+        y_train = y_train['Energy']
+        y_test = y_test['Energy']
     else:
         print("split location")
         test = df[df['Location'].isin(locations)]
         train = df[~df['Location'].isin(locations)]
-    print("Train set: ", train.shape)
-    print("Test set: ", test.shape)
-    X_train = train.drop(['Time', 'Energy', 'Location'], axis=1)
-    X_test = test.drop(['Time', 'Energy', 'Location'], axis=1)
-    y_train = train['Energy']
-    y_test = test['Energy']
-
+        print("Train set: ", train.shape)
+        print("Test set: ", test.shape)
+        X_train = train.drop(['Time', 'Energy', 'Location'], axis=1)
+        X_test = test.drop(['Time', 'Energy', 'Location'], axis=1)
+        y_train = train['Energy']
+        y_test = test['Energy']
+    
     X_train_norm, scaler = normalize_training(X_train, gpu=gpu)
     X_test_norm = scaler.transform(X_test)
     model = estimator
@@ -239,10 +259,12 @@ def total_averaged_metrics_individual(metrics_list):
     print("Total Averaged R2: {}".format(t_r2))
     return t_rmse, t_wape, t_r2
 
-def build_predict_show(df, number_timesteps, estimator, selected_features=None, normalize=False, train_size=0.8, start_timestep=1 ):
+def build_predict_show(df, number_timesteps, estimator, selected_features=None, normalize=False, train_size=0.8, start_timestep=1, cv=10):
     full_start = time.time()
     metrics_list = []
+    
     for i in range(start_timestep,(number_timesteps + 1)):
+        rmse_avg, wape_avg, r2_avg, discard = 0,0,0,0
         start = time.time()
         print("\nNumber of features ", i)
         if(selected_features != None):
@@ -250,16 +272,55 @@ def build_predict_show(df, number_timesteps, estimator, selected_features=None, 
         else:
             X, y = last_energy_points(df, i)
         
-        X_train, X_test, y_train, y_test = train_test_split(X,y, train_size=train_size)
-        
-        if(normalize):
-            scaler = MinMaxScaler().fit(X_train)
-            X_train = scaler.transform(X_train)
-            X_test = scaler.transform(X_test)
-        
-        model, preds = build_model(estimator, X_train, y_train, X_test)
-        rmse, wape, r2 = performance_metrics(preds.reshape(-1), y_test.values.reshape(-1))
-        metrics_list.append((rmse, wape,r2))
+        for j in range(cv):
+            X_train, X_test, y_train, y_test = expanding_window_split(X,y, cv=j, n_splits=cv)
+            #X_train, X_test, y_train, y_test = train_test_split(X,y,train_size=0.8, random_state=j*5)
+
+            if(normalize):
+                scaler = MinMaxScaler().fit(X_train)
+                X_train = scaler.transform(X_train)
+                X_test = scaler.transform(X_test)
+            
+            model, preds = build_model(estimator, X_train, y_train, X_test)
+            rmse, wape, r2 = performance_metrics(preds.reshape(-1), y_test.values.reshape(-1))
+            if(rmse > 1):
+                discard += 1
+                continue
+            rmse_avg += rmse
+            wape_avg += wape
+            r2_avg += r2
+        metrics_list.append((rmse_avg/(cv-discard), wape_avg/(cv-discard),r2_avg/(cv-discard)))
+        print("\nElapsed time: %.3f seconds" % (time.time() - start))
+    print("\nFull Elapsed time: %.3f seconds" % (time.time() - full_start))
+    return model, preds, metrics_list
+
+def build_predict_show_rf(df, number_timesteps, estimator, selected_features=None, normalize=False, train_size=0.8, start_timestep=1, cv=5):
+    full_start = time.time()
+    metrics_list = []
+    for i in range(start_timestep,(number_timesteps + 1)):
+        rmse_avg, wape_avg, r2_avg, discard = 0,0,0,0
+        start = time.time()
+        print("\nNumber of features ", i)
+        if(selected_features != None):
+            X, y = retrieve_selected_features(df, selected_features, "2019-01-01")
+        else:
+            X, y = last_energy_points(df, i)
+        for j in range(cv):
+            X_train, X_test, y_train, y_test = expanding_window_split(X,y, cv=j, n_splits=5)
+            
+            if(normalize):
+                scaler = MinMaxScaler().fit(X_train)
+                X_train = scaler.transform(X_train)
+                X_test = scaler.transform(X_test)
+            model, preds = build_model(estimator, X_train, y_train, X_test)
+            rmse, wape, r2 = performance_metrics(pd.DataFrame(preds).values.reshape(-1), y_test.values.reshape(-1))
+            if(rmse > 1):
+                discard += 1
+                continue
+            rmse_avg += rmse
+            wape_avg += wape
+            r2_avg += r2
+        metrics_list.append((rmse_avg/(cv-discard), wape_avg/(cv-discard),r2_avg/(cv-discard)))
         print("\nElapsed time: %.3f seconds" % (time.time() - start))
     print("\nFull Elapsed time: %.3f seconds" % (time.time() - full_start))
     return model, preds, metrics_list
@@ -290,6 +351,37 @@ def show_graphic_per_timestep(metrics_list, number_of_houses):
     plt.title('R2 per house')
     plt.xlabel('Number of houses')
     plt.ylabel('R2')
+    plt.show()
+
+def show_all_metrics_per_house(metrics_list, number_of_houses):
+    rmse_list = []
+    wape_list = []
+    r2_list = []
+
+    for i in range(0,len(metrics_list)):
+        rmse_list.append(metrics_list[i][0][0])
+        wape_list.append(metrics_list[i][0][1] / 100)
+        r2_list.append(metrics_list[i][0][2])
+        
+    plt.plot(range(0, number_of_houses), rmse_list, label='RMSE')
+
+    # Plot the second list
+    plt.plot(range(0, number_of_houses), wape_list, label='WAPE')
+
+    # Plot the third list
+    plt.plot(range(0, number_of_houses), r2_list, label='R2')
+
+    # Set the title, xlabel, and ylabel
+    #plt.title('Performance Metrics per House')
+    plt.xlabel('House')
+    plt.ylabel('Performance')
+
+    # Add a legend to differentiate the lines
+    plt.legend()
+
+    plt.yticks(np.arange(0, 1.1, 0.1))
+
+    # Display the combined plot
     plt.show()
 
 def add_energy_variation(df):

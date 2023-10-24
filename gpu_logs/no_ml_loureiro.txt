@@ -1,27 +1,27 @@
-No ML - Previous 15
-No_ML
-MSE: 0.0059
-WAPE: 0.3838
-R2: 0.5838
-No_ML_Aggregated
-MSE: 0.0028
-WAPE: 0.125
-R2: 0.7361
-No ML - Previous Day
-No_ML
-MSE: 0.0147
-WAPE: 0.6642
-R2: -0.04
-No_ML_Aggregated
-MSE: 0.0051
-WAPE: 0.1896
-R2: 0.5153
-No ML - Previous Week
-No_ML
-MSE: 0.0157
-WAPE: 0.6798
-R2: -0.1118
-No_ML_Aggregated
-MSE: 0.0057
-WAPE: 0.1978
-R2: 0.468
+Baseline - Previous 15
+Baseline
+RMSE: 0.0777
+WAPE: 0.3643
+R2: 0.6384
+Baseline_Aggregated
+RMSE: 0.0391
+WAPE: 0.1048
+R2: 0.8542
+Baseline - Previous Day
+Baseline
+RMSE: 0.1299
+WAPE: 0.667
+R2: -0.0109
+Baseline_Aggregated
+RMSE: 0.0684
+WAPE: 0.1829
+R2: 0.555
+Baseline - Previous Week
+Baseline
+RMSE: 0.1313
+WAPE: 0.6699
+R2: -0.0323
+Baseline_Aggregated
+RMSE: 0.0683
+WAPE: 0.1818
+R2: 0.5586

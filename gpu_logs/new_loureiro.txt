@@ -1,0 +1,850 @@
+
+----------------------------
+
+Linear Regression
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 0.0473 s
+RMSE: 0.0610
+WAPE: 34.93
+R2: 0.6556
+
+Iteration 1
+Elapsed time: 0.1012 s
+RMSE: 0.0613
+WAPE: 34.41
+R2: 0.6506
+
+Iteration 2
+Elapsed time: 0.1794 s
+RMSE: 0.0588
+WAPE: 34.70
+R2: 0.6331
+
+Iteration 3
+Elapsed time: 0.2274 s
+RMSE: 0.0659
+WAPE: 38.06
+R2: 0.6647
+
+Iteration 4
+Elapsed time: 0.2890 s
+RMSE: 0.0738
+WAPE: 36.66
+R2: 0.7258
+
+Iteration 5
+Elapsed time: 0.3578 s
+RMSE: 0.0791
+WAPE: 35.55
+R2: 0.7597
+
+Iteration 6
+Elapsed time: 0.4270 s
+RMSE: 0.0867
+WAPE: 37.68
+R2: 0.7585
+
+Iteration 7
+Elapsed time: 0.4834 s
+RMSE: 0.0879
+WAPE: 39.53
+R2: 0.7063
+
+Iteration 8
+Elapsed time: 0.5579 s
+RMSE: 0.0723
+WAPE: 40.08
+R2: 0.6427
+
+Iteration 9
+Elapsed time: 0.6231 s
+RMSE: 0.0666
+WAPE: 37.87
+R2: 0.6446
+
+----------------------------
+
+Linear Regression
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 0.0350 s
+RMSE: 0.0610
+WAPE: 34.99
+R2: 0.6556
+
+Iteration 1
+Elapsed time: 0.0877 s
+RMSE: 0.0613
+WAPE: 34.49
+R2: 0.6506
+
+Iteration 2
+Elapsed time: 0.1494 s
+RMSE: 0.0588
+WAPE: 34.62
+R2: 0.6332
+
+Iteration 3
+Elapsed time: 0.2052 s
+RMSE: 0.0659
+WAPE: 37.96
+R2: 0.6647
+
+Iteration 4
+Elapsed time: 0.2593 s
+RMSE: 0.0738
+WAPE: 36.64
+R2: 0.7258
+
+Iteration 5
+Elapsed time: 0.3193 s
+RMSE: 0.0791
+WAPE: 35.45
+R2: 0.7597
+
+Iteration 6
+Elapsed time: 0.3777 s
+RMSE: 0.0867
+WAPE: 37.78
+R2: 0.7585
+
+Iteration 7
+Elapsed time: 0.4366 s
+RMSE: 0.0879
+WAPE: 39.51
+R2: 0.7063
+
+Iteration 8
+Elapsed time: 0.5018 s
+RMSE: 0.0723
+WAPE: 40.08
+R2: 0.6427
+
+Iteration 9
+Elapsed time: 0.5595 s
+RMSE: 0.0666
+WAPE: 37.89
+R2: 0.6446
+
+----------------------------
+
+Linear Regression
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 0.5691 s
+RMSE: 0.0800
+WAPE: 42.38
+R2: 0.6835
+
+Iteration 1
+Elapsed time: 0.5621 s
+RMSE: 0.0852
+WAPE: 39.22
+R2: 0.6909
+
+Iteration 2
+Elapsed time: 0.5747 s
+RMSE: 0.0801
+WAPE: 36.07
+R2: 0.6877
+
+Iteration 3
+Elapsed time: 0.5631 s
+RMSE: 0.0834
+WAPE: 34.22
+R2: 0.7165
+
+Iteration 4
+Elapsed time: 0.5636 s
+RMSE: 0.0762
+WAPE: 35.36
+R2: 0.7057
+
+Iteration 5
+Elapsed time: 0.5659 s
+RMSE: 0.0700
+WAPE: 40.13
+R2: 0.6238
+
+Iteration 6
+Elapsed time: 0.5641 s
+RMSE: 0.0535
+WAPE: 40.12
+R2: 0.6760
+
+Iteration 7
+Elapsed time: 0.5639 s
+RMSE: 0.0743
+WAPE: 39.49
+R2: 0.6759
+
+Iteration 8
+Elapsed time: 0.5654 s
+RMSE: 0.0639
+WAPE: 34.92
+R2: 0.7666
+
+Iteration 9
+Elapsed time: 0.5649 s
+RMSE: 0.0630
+WAPE: 35.33
+R2: 0.6721
+
+----------------------------
+
+Linear Regression
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 0.4997 s
+RMSE: 0.0800
+WAPE: 42.38
+R2: 0.6835
+
+Iteration 1
+Elapsed time: 0.5025 s
+RMSE: 0.0852
+WAPE: 39.21
+R2: 0.6908
+
+Iteration 2
+Elapsed time: 0.5028 s
+RMSE: 0.0801
+WAPE: 36.06
+R2: 0.6877
+
+Iteration 3
+Elapsed time: 0.5039 s
+RMSE: 0.0834
+WAPE: 34.22
+R2: 0.7165
+
+Iteration 4
+Elapsed time: 0.5035 s
+RMSE: 0.0762
+WAPE: 35.36
+R2: 0.7057
+
+Iteration 5
+Elapsed time: 0.5026 s
+RMSE: 0.0700
+WAPE: 40.12
+R2: 0.6238
+
+Iteration 6
+Elapsed time: 0.5030 s
+RMSE: 0.0535
+WAPE: 40.11
+R2: 0.6760
+
+Iteration 7
+Elapsed time: 0.5025 s
+RMSE: 0.0743
+WAPE: 39.48
+R2: 0.6759
+
+Iteration 8
+Elapsed time: 0.5035 s
+RMSE: 0.0639
+WAPE: 34.91
+R2: 0.7666
+
+Iteration 9
+Elapsed time: 0.5061 s
+RMSE: 0.0630
+WAPE: 35.33
+R2: 0.6721
+
+----------------------------
+
+XGBoost
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 5.4081 s
+RMSE: 0.0620
+WAPE: 35.25
+R2: 0.6439
+
+Iteration 1
+Elapsed time: 4.4637 s
+RMSE: 0.0601
+WAPE: 33.10
+R2: 0.6645
+
+Iteration 2
+Elapsed time: 4.8101 s
+RMSE: 0.0571
+WAPE: 33.37
+R2: 0.6530
+
+Iteration 3
+Elapsed time: 5.1155 s
+RMSE: 0.0656
+WAPE: 37.04
+R2: 0.6675
+
+Iteration 4
+Elapsed time: 5.6386 s
+RMSE: 0.0734
+WAPE: 36.36
+R2: 0.7293
+
+Iteration 5
+Elapsed time: 5.9542 s
+RMSE: 0.0773
+WAPE: 34.02
+R2: 0.7707
+
+Iteration 6
+Elapsed time: 6.1305 s
+RMSE: 0.0887
+WAPE: 36.71
+R2: 0.7472
+
+Iteration 7
+Elapsed time: 6.5363 s
+RMSE: 0.0836
+WAPE: 36.60
+R2: 0.7340
+
+Iteration 8
+Elapsed time: 6.9033 s
+RMSE: 0.0699
+WAPE: 38.13
+R2: 0.6657
+
+Iteration 9
+Elapsed time: 7.1726 s
+RMSE: 0.0638
+WAPE: 35.93
+R2: 0.6736
+
+----------------------------
+
+XGBoost
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 4.6324 s
+RMSE: 0.0619
+WAPE: 35.66
+R2: 0.6452
+
+Iteration 1
+Elapsed time: 5.3004 s
+RMSE: 0.0611
+WAPE: 34.24
+R2: 0.6536
+
+Iteration 2
+Elapsed time: 5.7111 s
+RMSE: 0.0575
+WAPE: 33.82
+R2: 0.6485
+
+Iteration 3
+Elapsed time: 6.0312 s
+RMSE: 0.0662
+WAPE: 37.73
+R2: 0.6607
+
+Iteration 4
+Elapsed time: 6.3934 s
+RMSE: 0.0745
+WAPE: 37.10
+R2: 0.7208
+
+Iteration 5
+Elapsed time: 6.7659 s
+RMSE: 0.0802
+WAPE: 35.62
+R2: 0.7531
+
+Iteration 6
+Elapsed time: 7.1202 s
+RMSE: 0.0922
+WAPE: 40.71
+R2: 0.7268
+
+Iteration 7
+Elapsed time: 7.4195 s
+RMSE: 0.0854
+WAPE: 38.16
+R2: 0.7223
+
+Iteration 8
+Elapsed time: 7.7211 s
+RMSE: 0.0708
+WAPE: 39.13
+R2: 0.6571
+
+Iteration 9
+Elapsed time: 8.0006 s
+RMSE: 0.0647
+WAPE: 36.86
+R2: 0.6649
+
+----------------------------
+
+XGBoost
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 7.0588 s
+RMSE: 0.0798
+WAPE: 41.20
+R2: 0.6849
+
+Iteration 1
+Elapsed time: 7.0512 s
+RMSE: 0.0862
+WAPE: 39.17
+R2: 0.6832
+
+Iteration 2
+Elapsed time: 7.0957 s
+RMSE: 0.0809
+WAPE: 36.65
+R2: 0.6814
+
+Iteration 3
+Elapsed time: 7.0457 s
+RMSE: 0.0849
+WAPE: 34.87
+R2: 0.7062
+
+Iteration 4
+Elapsed time: 6.9915 s
+RMSE: 0.0774
+WAPE: 35.68
+R2: 0.6963
+
+Iteration 5
+Elapsed time: 7.0781 s
+RMSE: 0.0696
+WAPE: 39.57
+R2: 0.6283
+
+Iteration 6
+Elapsed time: 7.1076 s
+RMSE: 0.0534
+WAPE: 39.32
+R2: 0.6771
+
+Iteration 7
+Elapsed time: 7.0656 s
+RMSE: 0.0733
+WAPE: 38.90
+R2: 0.6839
+
+Iteration 8
+Elapsed time: 6.9500 s
+RMSE: 0.0665
+WAPE: 34.00
+R2: 0.7474
+
+Iteration 9
+Elapsed time: 7.0859 s
+RMSE: 0.0616
+WAPE: 33.78
+R2: 0.6864
+
+----------------------------
+
+XGBoost
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 7.8067 s
+RMSE: 0.0803
+WAPE: 42.35
+R2: 0.6810
+
+Iteration 1
+Elapsed time: 7.8058 s
+RMSE: 0.0862
+WAPE: 39.33
+R2: 0.6837
+
+Iteration 2
+Elapsed time: 7.8106 s
+RMSE: 0.0810
+WAPE: 37.08
+R2: 0.6804
+
+Iteration 3
+Elapsed time: 7.8009 s
+RMSE: 0.0850
+WAPE: 35.20
+R2: 0.7055
+
+Iteration 4
+Elapsed time: 7.7880 s
+RMSE: 0.0772
+WAPE: 35.52
+R2: 0.6981
+
+Iteration 5
+Elapsed time: 7.8741 s
+RMSE: 0.0698
+WAPE: 40.19
+R2: 0.6265
+
+Iteration 6
+Elapsed time: 7.8773 s
+RMSE: 0.0535
+WAPE: 40.47
+R2: 0.6766
+
+Iteration 7
+Elapsed time: 7.8873 s
+RMSE: 0.0740
+WAPE: 40.02
+R2: 0.6786
+
+Iteration 8
+Elapsed time: 7.7863 s
+RMSE: 0.0657
+WAPE: 34.78
+R2: 0.7535
+
+Iteration 9
+Elapsed time: 7.7998 s
+RMSE: 0.0621
+WAPE: 34.20
+R2: 0.6813
+
+----------------------------
+
+Random Forest
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 1.0605 s
+RMSE: 0.0627
+WAPE: 35.92
+R2: 0.6359
+
+Iteration 1
+Elapsed time: 1.7247 s
+RMSE: 0.0612
+WAPE: 33.71
+R2: 0.6523
+
+Iteration 2
+Elapsed time: 2.5909 s
+RMSE: 0.0579
+WAPE: 33.55
+R2: 0.6443
+
+Iteration 3
+Elapsed time: 3.3481 s
+RMSE: 0.0669
+WAPE: 38.08
+R2: 0.6540
+
+Iteration 4
+Elapsed time: 4.2010 s
+RMSE: 0.0762
+WAPE: 38.54
+R2: 0.7080
+
+Iteration 5
+Elapsed time: 5.0400 s
+RMSE: 0.0801
+WAPE: 35.35
+R2: 0.7539
+
+Iteration 6
+Elapsed time: 5.9133 s
+RMSE: 0.0920
+WAPE: 39.20
+R2: 0.7279
+
+Iteration 7
+Elapsed time: 6.7870 s
+RMSE: 0.0855
+WAPE: 37.19
+R2: 0.7217
+
+Iteration 8
+Elapsed time: 7.5132 s
+RMSE: 0.0710
+WAPE: 38.32
+R2: 0.6551
+
+Iteration 9
+Elapsed time: 8.5540 s
+RMSE: 0.0649
+WAPE: 36.28
+R2: 0.6626
+
+----------------------------
+
+Random Forest
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 0.9980 s
+RMSE: 0.0636
+WAPE: 37.45
+R2: 0.6255
+
+Iteration 1
+Elapsed time: 1.6783 s
+RMSE: 0.0626
+WAPE: 35.73
+R2: 0.6357
+
+Iteration 2
+Elapsed time: 2.5026 s
+RMSE: 0.0588
+WAPE: 35.19
+R2: 0.6324
+
+Iteration 3
+Elapsed time: 3.3047 s
+RMSE: 0.0677
+WAPE: 39.18
+R2: 0.6460
+
+Iteration 4
+Elapsed time: 4.0875 s
+RMSE: 0.0771
+WAPE: 39.35
+R2: 0.7014
+
+Iteration 5
+Elapsed time: 4.9125 s
+RMSE: 0.0841
+WAPE: 37.91
+R2: 0.7286
+
+Iteration 6
+Elapsed time: 5.7222 s
+RMSE: 0.0971
+WAPE: 44.91
+R2: 0.6971
+
+Iteration 7
+Elapsed time: 6.6138 s
+RMSE: 0.0878
+WAPE: 39.98
+R2: 0.7068
+
+Iteration 8
+Elapsed time: 7.4698 s
+RMSE: 0.0724
+WAPE: 40.42
+R2: 0.6418
+
+Iteration 9
+Elapsed time: 8.2589 s
+RMSE: 0.0661
+WAPE: 38.32
+R2: 0.6503
+
+----------------------------
+
+Random Forest
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 7.5783 s
+RMSE: 0.0815
+WAPE: 42.09
+R2: 0.6712
+
+Iteration 1
+Elapsed time: 7.6177 s
+RMSE: 0.0876
+WAPE: 39.70
+R2: 0.6731
+
+Iteration 2
+Elapsed time: 7.6133 s
+RMSE: 0.0822
+WAPE: 37.40
+R2: 0.6710
+
+Iteration 3
+Elapsed time: 7.6934 s
+RMSE: 0.0865
+WAPE: 35.55
+R2: 0.6948
+
+Iteration 4
+Elapsed time: 7.7367 s
+RMSE: 0.0791
+WAPE: 36.08
+R2: 0.6831
+
+Iteration 5
+Elapsed time: 7.7150 s
+RMSE: 0.0705
+WAPE: 39.83
+R2: 0.6191
+
+Iteration 6
+Elapsed time: 7.6199 s
+RMSE: 0.0542
+WAPE: 40.16
+R2: 0.6679
+
+Iteration 7
+Elapsed time: 7.6254 s
+RMSE: 0.0755
+WAPE: 40.74
+R2: 0.6650
+
+Iteration 8
+Elapsed time: 7.6203 s
+RMSE: 0.0678
+WAPE: 34.34
+R2: 0.7377
+
+Iteration 9
+Elapsed time: 7.5727 s
+RMSE: 0.0622
+WAPE: 33.92
+R2: 0.6805
+
+----------------------------
+
+Random Forest
+
+----------------------------
+
+
+Iteration 0
+Elapsed time: 7.5351 s
+RMSE: 0.0824
+WAPE: 43.97
+R2: 0.6641
+
+Iteration 1
+Elapsed time: 7.5113 s
+RMSE: 0.0882
+WAPE: 40.96
+R2: 0.6684
+
+Iteration 2
+Elapsed time: 7.6504 s
+RMSE: 0.0828
+WAPE: 38.27
+R2: 0.6657
+
+Iteration 3
+Elapsed time: 7.4913 s
+RMSE: 0.0875
+WAPE: 36.65
+R2: 0.6879
+
+Iteration 4
+Elapsed time: 7.5203 s
+RMSE: 0.0796
+WAPE: 37.36
+R2: 0.6791
+
+Iteration 5
+Elapsed time: 7.5754 s
+RMSE: 0.0710
+WAPE: 41.30
+R2: 0.6134
+
+Iteration 6
+Elapsed time: 7.5184 s
+RMSE: 0.0547
+WAPE: 41.41
+R2: 0.6621
+
+Iteration 7
+Elapsed time: 7.5836 s
+RMSE: 0.0758
+WAPE: 41.21
+R2: 0.6627
+
+Iteration 8
+Elapsed time: 7.5520 s
+RMSE: 0.0683
+WAPE: 36.48
+R2: 0.7339
+
+Iteration 9
+Elapsed time: 7.5820 s
+RMSE: 0.0634
+WAPE: 35.50
+R2: 0.6675
+
+
+
+
+
+Linear Regression
+Total Averaged RMSE: 0.071
+Total Averaged WAPE: 36.947
+Total Averaged R2: 0.684
+Total Averaged RMSE: 0.071
+Total Averaged WAPE: 36.941
+Total Averaged R2: 0.684
+Total Averaged RMSE: 0.073
+Total Averaged WAPE: 37.724
+Total Averaged R2: 0.69
+Total Averaged RMSE: 0.073
+Total Averaged WAPE: 37.718
+Total Averaged R2: 0.69
+
+XGBoost
+Total Averaged RMSE: 0.07
+Total Averaged WAPE: 35.651
+Total Averaged R2: 0.695
+Total Averaged RMSE: 0.071
+Total Averaged WAPE: 36.903
+Total Averaged R2: 0.685
+Total Averaged RMSE: 0.073
+Total Averaged WAPE: 37.314
+Total Averaged R2: 0.688
+Total Averaged RMSE: 0.073
+Total Averaged WAPE: 37.914
+Total Averaged R2: 0.687
+
+Random Forest
+Total Averaged RMSE: 0.072
+Total Averaged WAPE: 36.614
+Total Averaged R2: 0.682
+Total Averaged RMSE: 0.074
+Total Averaged WAPE: 38.844
+Total Averaged R2: 0.667
+Total Averaged RMSE: 0.075
+Total Averaged WAPE: 37.981
+Total Averaged R2: 0.676
+Total Averaged RMSE: 0.075
+Total Averaged WAPE: 39.311
+Total Averaged R2: 0.67
